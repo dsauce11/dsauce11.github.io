@@ -27,6 +27,13 @@
 <p id = p3></p>
 <p id = p4></p>
 
+<select id="selectButton"></select>
+<div id='SelectDrop'></div>
+<button id="HomePage" onclick = "TitlePage()">Home Page</button>
+<button id="graph1" onclick = "graph_one()">Page 1</button>
+<button id="graph2" onclick = "graph_two()">Page 2</button>
+<button id="graph3" onclick = "graph_three()">Page 3</button>
+
 
 </body>
 <script>
@@ -36,19 +43,22 @@
         const explantion = "The English Premier League is one of the most popular Football (or soccer however you may call it) in the world." +
                             " As the new 2021/2022 season is about to start in August 13, I wonder how the historic top 6 clubs have performed thoughout the " + 
                             "past 5 years. From the 2016/17 to the 2020/21 Season. These top 6 clubs being Arsenal, Chelsea, Liverpool, Manchester United, Manchester City and Spurs." + 
-                            " While also delving into past seasons player performances and see if any players have been imporving or decreasing in quality."
+                            " While also delving into past seasons player performances and see if any players have been improving or decreasing in quality."
         d3.select('body').select('#p1').text(explantion);
         d3.select('body').select('#p2').text("Below should be the buttons to navigate to the graphs I have presented.");
 
     }
 
     function graph_one() {
+        d3.select('body').select('#p1').text("League Seasons");
 
     }
     function graph_two() {
+        d3.select('body').select('#p1').text("Expected Goals vs Goals");
         
     }
     function graph_three() {
+        d3.select('body').select('#p1').text("Expected Assists vs Assists");
         
     }
     
