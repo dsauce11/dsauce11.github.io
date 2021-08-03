@@ -47,6 +47,7 @@
         d3.select('body').select('#p1').text(explantion);
         d3.select('body').select('#p2').text("Below should be the buttons to navigate to the graphs I have presented.");
         d3.select("svg").remove();
+        d3.select("#selectButton").selectAll('option').remove();  
 
     }
 
@@ -73,13 +74,15 @@
         d3.select('body').select('#p1').text("Expected Goals vs Goals");
         d3.select('body').select('#p2').text("The graph below:");
         d3.select("svg").remove(); //Makes sure to remove what's previously shown and show new graph SOURCE: https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
+        d3.select("#selectButton").selectAll('option').remove();
 
         
     }
     function graph_three() {
         d3.select('body').select('#p1').text("Expected Assists vs Assists");
         d3.select('body').select('#p2').text("The graph below:");
-        d3.select("svg").remove(); 
+        d3.select("svg").remove();
+        d3.select("#selectButton").selectAll('option').remove();
 
         
     }
