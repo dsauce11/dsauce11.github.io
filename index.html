@@ -66,6 +66,30 @@
             const myColor = d3.scaleOrdinal().domain(teams).range(d3.schemeSet2);
             
             //X-Axis Creation
+            const x = d3.scaleLinear().domain(d3.extent(data, function(d) { return (d.Season); })).range([0,1000]);
+            svg.append('g').attr("transform",`translate(0, ${800})`).call(d3.axisBottom(x));
+
+            //Y-axis Creation
+            const y = d3.scaleLinear().domain([40,110]).range([ 800, 0 ]);
+            svg.append("g").call(d3.axisLeft(y));
+
+            //Create Line
+            const line = svg.append('g').append('path').datum(data).attr('d',d3.line().x(function(d) { return x(+d.Season) })
+                .y(function(d) { return y(+d.Pts) }))
+                .attr("stroke", function(d){ return myColor("Arsenal") }).style("stroke-width", 4).style("fill", "none")
+
+                // Update Teams
+                function update(Group) {
+                    const dataFilter = data.map(function(d){return {Season: d.Season, value:d[Group]} })
+                }
+                line.datum(dataFilter).transition().duration(1000).attr("d", d3.line().x(function(d) { return x(+d.Season) })
+                    .y(function(d) { return y(+d.Pts) })).attr("stroke", function(d){ return myColor(selectedGroup) })
+            
+                    d3.select("#selectButton").on("change", function(event,d) {
+                        const selectedOption = d3.select(this).property("value") 
+                        update(selectedOption)
+                    })    
+        
 
 
         });
