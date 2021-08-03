@@ -68,7 +68,7 @@
             const myColor = d3.scaleOrdinal().domain(teams).range(d3.schemeSet2);
             
             //X-Axis Creation
-            const x = d3.scaleBand().domain(d3.extent(data, function(d) { return (d.Season); })).range([0,100]);
+            const x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,800]);
             svg.append('g').attr("transform",`translate(0, ${500})`).call(d3.axisBottom(x));
 
             //Y-axis Creation
