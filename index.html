@@ -20,7 +20,7 @@
 <img src="liverpool-icon.png" alt="liverpool" width="235" height="256">
 <img src="Manchester-United-icon.png" alt="ManU" width="235" height="256">
 <img src="manchester-city-icon.png" alt="ManCity" width="235" height="256">
-<img src="Spurs-fc-icon.png" alt="Spurs" width="212" height="235">
+<img src="Spurs-fc-icon.png" alt="Spurs" width="235" height="256">
 
 <p id = p1></p>
 <p id = p2></p>
@@ -30,9 +30,9 @@
 <select id="selectButton"></select>
 <div id='SelectDrop'></div>
 <button id="HomePage" onclick = "TitlePage()">Home Page</button>
-<button id="graph1" onclick = "graph_one()">Page 1</button>
-<button id="graph2" onclick = "graph_two()">Page 2</button>
-<button id="graph3" onclick = "graph_three()">Page 3</button>
+<button id="graph1" onclick = "graph_one()">Graph 1</button>
+<button id="graph2" onclick = "graph_two()">Graph 2</button>
+<button id="graph3" onclick = "graph_three()">Graph 3</button>
 
 
 </body>
@@ -42,7 +42,7 @@
     function TitlePage() {
         const explantion = "The English Premier League is one of the most popular Football (or soccer however you may call it) in the world." +
                             " As the new 2021/2022 season is about to start in August 13, I wonder how the historic top 6 clubs have performed thoughout the " + 
-                            "past 5 years. From the 2016/17 to the 2020/21 Season. These top 6 clubs being Arsenal, Chelsea, Liverpool, Manchester United, Manchester City and Spurs." + 
+                            "past 4 years. From the 2017/18 to the 2020/21 Season. These top 6 clubs being Arsenal, Chelsea, Liverpool, Manchester United, Manchester City and Spurs." + 
                             " While also delving into past seasons player performances and see if any players have been improving or decreasing in quality."
         d3.select('body').select('#p1').text(explantion);
         d3.select('body').select('#p2').text("Below should be the buttons to navigate to the graphs I have presented.");
@@ -50,7 +50,7 @@
     }
 
     function graph_one() {
-        d3.select('body').select('#p1').text("League Seasons");
+        d3.select('body').select('#p1').text("In this page will contain the Top 6 Clubs total points in the past 4 Premier League Seasons");
         d3.select('body').select('#p2').text("The graph below:");
 
     }
