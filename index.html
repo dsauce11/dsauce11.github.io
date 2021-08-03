@@ -54,18 +54,26 @@
         d3.select('body').select('#p2').text("The graph below:");
 
         //Actual D3.js graph time
-        d3.select("svg").remove(); //Makes sure to remove what's previously shown and show new graph SOURCE: https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
-        d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersData.csv");
+        d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersData.csv").then( function(data) {
+            const teams = ['Arsenal', 'Chelsea', 'Liverpool', 'Manchester City', 'Manchester Utd', 'Tottenham'];
+            d3.select("#selectButton").selectAll('myOptions').data(teams).enter().append('Option')
+                .text(function (d) { return d; }).attr("value", function (d) { return d; })
+                
+        });
 
     }
     function graph_two() {
         d3.select('body').select('#p1').text("Expected Goals vs Goals");
         d3.select('body').select('#p2').text("The graph below:");
+        d3.select("svg").remove(); //Makes sure to remove what's previously shown and show new graph SOURCE: https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
+
         
     }
     function graph_three() {
         d3.select('body').select('#p1').text("Expected Assists vs Assists");
         d3.select('body').select('#p2').text("The graph below:");
+        d3.select("svg").remove(); 
+
         
     }
     
