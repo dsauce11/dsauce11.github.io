@@ -46,6 +46,7 @@
                             " While also delving into past seasons player performances and see if any players have been improving or decreasing in quality."
         d3.select('body').select('#p1').text(explantion);
         d3.select('body').select('#p2').text("Below should be the buttons to navigate to the graphs I have presented.");
+        d3.select("svg").remove();
 
     }
 
@@ -61,9 +62,9 @@
             d3.select("#selectButton").selectAll('myOptions').data(teams).enter().append('Option')
                 .text(function (d) { return d; }).attr("value", function (d) { return d; })
 
-            const myColor = d3.scaleOrdinal().domain(teams).range(d3.schemeSet2);
+            //const myColor = d3.scaleOrdinal().domain(teams).range(d3.schemeSet2);
             //X-Axis Creation
-            
+
 
         });
 
