@@ -63,7 +63,8 @@
             d3.select("#selectButton").selectAll('myOptions').data(teams).enter().append('Option')
                 .text(function (d) { return d; }).attr("value", function (d) { return d; })
 
-            //const myColor = d3.scaleOrdinal().domain(teams).range(d3.schemeSet2);
+            const myColor = d3.scaleOrdinal().domain(teams).range(d3.schemeSet2);
+            
             //X-Axis Creation
 
 
