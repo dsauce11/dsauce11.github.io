@@ -82,14 +82,15 @@
                 // Update Teams
                 function update(Group) {
                     const dataFilter = data.map(function(d){return {Season: d.Season, value:d[Group]} })
+                
+                    line.datum(dataFilter).transition().duration(1000).attr("d", d3.line().x(function(d) { return x(+d.Season) })
+                        .y(function(d) { return y(+d.Pts) })).attr("stroke", function(d){ return myColor(Group) })
                 }
-                line.datum(dataFilter).transition().duration(1000).attr("d", d3.line().x(function(d) { return x(+d.Season) })
-                    .y(function(d) { return y(+d.Pts) })).attr("stroke", function(d){ return myColor(selectedGroup) })
             
-                    d3.select("#selectButton").on("change", function(event,d) {
-                        const selectedOption = d3.select(this).property("value") 
-                        update(selectedOption)
-                    })    
+                d3.select("#selectButton").on("change", function(event,d) {
+                    const selectedOption = d3.select(this).property("value") 
+                    update(selectedOption)
+                })    
         
 
 
