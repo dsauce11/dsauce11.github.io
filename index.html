@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://d3js.org/d3.v6.min.js"></script>
 
 <head>
     <title> English Premier League Data Viz </title>
@@ -52,6 +52,10 @@
     function graph_one() {
         d3.select('body').select('#p1').text("In this page will contain the Top 6 Clubs total points in the past 4 Premier League Seasons");
         d3.select('body').select('#p2').text("The graph below:");
+
+        //Actual D3.js graph time
+        d3.select("svg").remove(); //Makes sure to remove what's previously shown and show new graph SOURCE: https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
+        d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersData.csv");
 
     }
     function graph_two() {
