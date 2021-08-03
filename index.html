@@ -62,16 +62,17 @@
         d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersData.csv").then( function(data) {
             const teams = ['Arsenal', 'Chelsea', 'Liverpool', 'Manchester City', 'Manchester Utd', 'Tottenham'];
             d3.select("#selectButton").selectAll('myOptions').data(teams).enter().append('Option')
-                .text(function (d) { return d; }).attr("value", function (d) { return d; })
+                .text(function (d) { return d; })
+                .attr("value", function (d) { return d; })
 
             const myColor = d3.scaleOrdinal().domain(teams).range(d3.schemeSet2);
             
             //X-Axis Creation
-            const x = d3.scaleLinear().domain(d3.extent(data, function(d) { return (d.Season); })).range([0,1000]);
+            const x = d3.scaleLinear().domain(d3.extent(data, function(d) { return (d.Season); })).range([0,600]);
             svg.append('g').attr("transform",`translate(0, ${500})`).call(d3.axisBottom(x));
 
             //Y-axis Creation
-            const y = d3.scaleLinear().domain([40,110]).range([ 500, 0 ]);
+            const y = d3.scaleLinear().domain([40,110]).range([500, 0 ]);
             svg.append("g").call(d3.axisLeft(y));
 
             //Create Line
@@ -80,17 +81,19 @@
                 .attr("stroke", function(d){ return myColor("Arsenal") }).style("stroke-width", 4).style("fill", "none")
 
                 // Update Teams
-                function update(Group) {
-                    const dataFilter = data.map(function(d){return {Season: d.Season, value:d[Group]} })
-                
-                    line.datum(dataFilter).transition().duration(1000).attr("d", d3.line().x(function(d) { return x(+d.Season) })
-                        .y(function(d) { return y(+d.Pts) })).attr("stroke", function(d){ return myColor(Group) })
-                }
+            function update(SelGroup) {
+                const dataFilter = data.map(function(d){return {Season: d.Season, value:d[SelGroup]} });
             
-                d3.select("#selectButton").on("change", function(event,d) {
-                    const selectedOption = d3.select(this).property("value") 
-                    update(selectedOption)
-                })    
+                line.datum(dataFilter).transition().duration(1000).attr("d", d3.line()
+                        .x(function(d) { return x(+d.Season) })
+                        .y(function(d) { return y(+d.Pts) }) )
+                        .attr("stroke", function(d){ return myColor(Group) })
+                };
+            
+            d3.select("#selectButton").on("change", function(event,d) {
+                const selectedOption = d3.select(this).property("value");
+                update(selectedOption)
+            })    
         
 
 
