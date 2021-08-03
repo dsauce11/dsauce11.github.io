@@ -54,11 +54,17 @@
         d3.select('body').select('#p2').text("The graph below:");
 
         //Actual D3.js graph time
+        const svg = d3.select("#SelectDrop").append("svg").attr("width", 1000).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
+        //Setting up Data and Graph
         d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersData.csv").then( function(data) {
             const teams = ['Arsenal', 'Chelsea', 'Liverpool', 'Manchester City', 'Manchester Utd', 'Tottenham'];
             d3.select("#selectButton").selectAll('myOptions').data(teams).enter().append('Option')
                 .text(function (d) { return d; }).attr("value", function (d) { return d; })
-                
+
+            const myColor = d3.scaleOrdinal().domain(teams).range(d3.schemeSet2);
+            //X-Axis Creation
+            
+
         });
 
     }
