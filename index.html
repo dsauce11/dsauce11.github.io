@@ -116,6 +116,34 @@
         d3.select("svg").remove(); //Makes sure to remove what's previously shown and show new graph SOURCE: https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
         d3.select("#selectButton").selectAll('option').remove();
 
+        //Actual D3.js graph time
+        const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
+
+        //Setting up Data and Graph
+        d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersData.csv").then(function(PlayData) {
+            const PlayersName = ["Bernd Leno", "Bukayo Saka","Granit Xhaka","Rob Holding","Pierre-Emerick Aubameyang","Kieran Tierney","Héctor Bellerín","Gabriel Dos Santos","Alexandre Lacazette","Thomas Partey"
+                                ,"Emile Smith-Rowe","Dani Ceballos","Mohamed Elneny","David Luiz","Nicolas Pépé","Willian","Pablo Marí","Martin Ødegaard","Calum Chambers","Cédric Soares","Martinelli","Ainsley Maitland-Niles"
+                                ,"Eddie Nketiah","Mathew Ryan","Joe Willock","Sead Kolašinac","Reiss Nelson","Shkodran Mustafi","Rúnar Alex Rúnarsson","Mattéo Guendouzi","Sokratis Papastathopoulos","Mesut Özil","Lucas Torreira"
+                                ,"Emiliano Martínez","Nacho Monreal","Alex Iwobi","Henrikh Mkhitaryan","Aaron Ramsey","Laurent Koscielny","Stephan Lichtsteiner","Petr Čech","Konstantinos Mavropanos","Carl Jenkinson","Danny Welbeck","Denis Suárez"
+                                ,"Alexis Sánchez","Jack Wilshere","David Ospina","Per Mertesacker","Alex Oxlade-Chamberlain","Olivier Giroud","Francis Coquelin","Theo Walcott","César Azpilicueta","Thibaut Courtois","N'Golo Kanté","Marcos Alonso"
+                                ,"Eden Hazard","Antonio Rüdiger","Cesc Fàbregas","Victor Moses","Tiemoué Bakayoko","Gary Cahill","Álvaro Morata","Andreas Christensen","Pedro","Davide Zappacosta","Danny Drinkwater","Michy Batshuayi","Emerson Palmieri"
+                                ,"Willy Caballero","Ross Barkley","Jeremie Boga","Charly Musonda Jr.","Callum Hudson-Odoi","Ethan Ampadu","Jorginho","Kepa Arrizabalaga","Mateo Kovačić","Gonzalo Higuaín","Ruben Loftus-Cheek","Mason Mount","Kurt Zouma"
+                                ,"Tammy Abraham","Christian Pulisic","Reece James","Fikayo Tomori","Billy Gilmour","Tariq Lamptey","Faustino Anjorin","Armando Broja","Edouard Mendy","Timo Werner","Ben Chilwell","Thiago Silva","Kai Havertz"
+                                ,"Hakim Ziyech","Mohamed Salah","Roberto Firmino","Sadio Mané","Georginio Wijnaldum","Jordan Henderson","Dejan Lovren","Emre Can","Joël Matip","Andrew Robertson","Joe Gomez","Loris Karius","Simon Mignolet","Trent Alexander-Arnold"
+                                ,"James Milner","Ragnar Klavan","Alberto Moreno","Virgil van Dijk","Philippe Coutinho","Dominic Solanke","Daniel Sturridge","Danny Ings","Nathaniel Clyne","Adam Lallana","Marko Grujić","Divock Origi","Ben Woodburn","Alisson","Fabinho","Naby Keïta","Xherdan Shaqiri"
+                                ,"Rafael Camacho","Adrián","Neco Williams","Takumi Minamino","Curtis Jones","Harvey Elliot","Thiago Alcántara","Nathaniel Phillips","Diogo Jota","Ozan Kabak","Rhys Williams","Caoimhín Kelleher","Kostas Tsimikas","Ederson","Kevin De Bruyne","Nicolás Otamendi","Fernandinho"
+                                ,"Kyle Walker","Raheem Sterling","David Silva","Leroy Sané","Sergio Agüero","Fabian Delph","Gabriel Jesus","Vincent Kompany","John Stones","Bernardo Silva","İlkay Gündoğan","Danilo","Aymeric Laporte","Oleksandr Zinchenko","Eliaquim Mangala","Benjamin Mendy","Claudio Bravo"
+                                ,"Yaya Touré","Brahim Díaz","Phil Foden","Lukas Nmecha","Riyad Mahrez","Rodri","João Cancelo","Eric García","Angeliño","Thomas Doyle","Rúben Dias","Ferrán Torres","Nathan Aké","Scott Carson","Zack Steffen","Liam Delap","David de Gea","Nemanja Matić","Romelu Lukaku"
+                                ,"Antonio Valencia","Chris Smalling","Ashley Young","Paul Pogba","Phil Jones","Juan Mata","Jesse Lingard","Anthony Martial","Marcus Rashford","Victor Lindelöf","Ander Herrera","Eric Bailly","Luke Shaw","Marcos Rojo","Scott McTominay","Marouane Fellaini","Matteo Darmian","Daley Blind"
+                                ,"Michael Carrick","Zlatan Ibrahimović","Sergio Romero","Axel Tuanzebe","Fred","Diogo Dalot","Andreas Pereira","Mason Greenwood","Tahith Chong","Angel Gomes","James Garner","Harry Maguire","Aaron Wan-Bissaka","Daniel James","Bruno Fernandes","Brandon Williams","Timothy Fosu-Mensah"
+                                ,"Odion Ighalo","Edinson Cavani","Dean Henderson","Alex Telles","Donny van de Beek","Amad Diallo","Anthony Elanga","Shola Shoretire","Hannibal Mejbri","William Thomas Fish","Christian Eriksen","Hugo Lloris","Jan Vertonghen","Harry Kane","Dele Alli","Eric Dier","Davinson Sánchez"
+                                ,"Son Heung-min","Ben Davies","Kieran Trippier","Mousa Dembélé","Serge Aurier","Moussa Sissoko","Toby Alderweireld","Danny Rose","Harry Winks","Victor Wanyama","Érik Lamela","Lucas Moura","Kyle Walker-Peters","Fernando Llorente","Paulo Gazzaniga","Michel Vorm","Vincent Janssen"
+                                ,"Georges-Kévin N'Koudou","Juan Foyth","Oliver Skipp","Luke Amos","Giovani Lo Celso","Tanguy Ndombele","Steven Bergwijn","Japhet Tanganga","Ryan Sessegnon","Gedson Fernandes","Troy Parrott","Pierre Højbjerg","Sergio Reguilón","Matt Doherty","Gareth Bale","Joe Rodon","Carlos Vinícius"
+                                ,"Dane Scarlet"]
+
+
+        });
+
         
     }
     function graph_three() {
@@ -123,6 +151,35 @@
         d3.select('body').select('#p2').text("The graph below:");
         d3.select("svg").remove();
         d3.select("#selectButton").selectAll('option').remove();
+
+        //Actual D3.js graph time
+        const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
+
+        //Setting up Data and Graph
+        d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersData.csv").then(function(PlayData) {
+            const PlayersName = ["Bernd Leno", "Bukayo Saka","Granit Xhaka","Rob Holding","Pierre-Emerick Aubameyang","Kieran Tierney","Héctor Bellerín","Gabriel Dos Santos","Alexandre Lacazette","Thomas Partey"
+                                ,"Emile Smith-Rowe","Dani Ceballos","Mohamed Elneny","David Luiz","Nicolas Pépé","Willian","Pablo Marí","Martin Ødegaard","Calum Chambers","Cédric Soares","Martinelli","Ainsley Maitland-Niles"
+                                ,"Eddie Nketiah","Mathew Ryan","Joe Willock","Sead Kolašinac","Reiss Nelson","Shkodran Mustafi","Rúnar Alex Rúnarsson","Mattéo Guendouzi","Sokratis Papastathopoulos","Mesut Özil","Lucas Torreira"
+                                ,"Emiliano Martínez","Nacho Monreal","Alex Iwobi","Henrikh Mkhitaryan","Aaron Ramsey","Laurent Koscielny","Stephan Lichtsteiner","Petr Čech","Konstantinos Mavropanos","Carl Jenkinson","Danny Welbeck","Denis Suárez"
+                                ,"Alexis Sánchez","Jack Wilshere","David Ospina","Per Mertesacker","Alex Oxlade-Chamberlain","Olivier Giroud","Francis Coquelin","Theo Walcott","César Azpilicueta","Thibaut Courtois","N'Golo Kanté","Marcos Alonso"
+                                ,"Eden Hazard","Antonio Rüdiger","Cesc Fàbregas","Victor Moses","Tiemoué Bakayoko","Gary Cahill","Álvaro Morata","Andreas Christensen","Pedro","Davide Zappacosta","Danny Drinkwater","Michy Batshuayi","Emerson Palmieri"
+                                ,"Willy Caballero","Ross Barkley","Jeremie Boga","Charly Musonda Jr.","Callum Hudson-Odoi","Ethan Ampadu","Jorginho","Kepa Arrizabalaga","Mateo Kovačić","Gonzalo Higuaín","Ruben Loftus-Cheek","Mason Mount","Kurt Zouma"
+                                ,"Tammy Abraham","Christian Pulisic","Reece James","Fikayo Tomori","Billy Gilmour","Tariq Lamptey","Faustino Anjorin","Armando Broja","Edouard Mendy","Timo Werner","Ben Chilwell","Thiago Silva","Kai Havertz"
+                                ,"Hakim Ziyech","Mohamed Salah","Roberto Firmino","Sadio Mané","Georginio Wijnaldum","Jordan Henderson","Dejan Lovren","Emre Can","Joël Matip","Andrew Robertson","Joe Gomez","Loris Karius","Simon Mignolet","Trent Alexander-Arnold"
+                                ,"James Milner","Ragnar Klavan","Alberto Moreno","Virgil van Dijk","Philippe Coutinho","Dominic Solanke","Daniel Sturridge","Danny Ings","Nathaniel Clyne","Adam Lallana","Marko Grujić","Divock Origi","Ben Woodburn","Alisson","Fabinho","Naby Keïta","Xherdan Shaqiri"
+                                ,"Rafael Camacho","Adrián","Neco Williams","Takumi Minamino","Curtis Jones","Harvey Elliot","Thiago Alcántara","Nathaniel Phillips","Diogo Jota","Ozan Kabak","Rhys Williams","Caoimhín Kelleher","Kostas Tsimikas","Ederson","Kevin De Bruyne","Nicolás Otamendi","Fernandinho"
+                                ,"Kyle Walker","Raheem Sterling","David Silva","Leroy Sané","Sergio Agüero","Fabian Delph","Gabriel Jesus","Vincent Kompany","John Stones","Bernardo Silva","İlkay Gündoğan","Danilo","Aymeric Laporte","Oleksandr Zinchenko","Eliaquim Mangala","Benjamin Mendy","Claudio Bravo"
+                                ,"Yaya Touré","Brahim Díaz","Phil Foden","Lukas Nmecha","Riyad Mahrez","Rodri","João Cancelo","Eric García","Angeliño","Thomas Doyle","Rúben Dias","Ferrán Torres","Nathan Aké","Scott Carson","Zack Steffen","Liam Delap","David de Gea","Nemanja Matić","Romelu Lukaku"
+                                ,"Antonio Valencia","Chris Smalling","Ashley Young","Paul Pogba","Phil Jones","Juan Mata","Jesse Lingard","Anthony Martial","Marcus Rashford","Victor Lindelöf","Ander Herrera","Eric Bailly","Luke Shaw","Marcos Rojo","Scott McTominay","Marouane Fellaini","Matteo Darmian","Daley Blind"
+                                ,"Michael Carrick","Zlatan Ibrahimović","Sergio Romero","Axel Tuanzebe","Fred","Diogo Dalot","Andreas Pereira","Mason Greenwood","Tahith Chong","Angel Gomes","James Garner","Harry Maguire","Aaron Wan-Bissaka","Daniel James","Bruno Fernandes","Brandon Williams","Timothy Fosu-Mensah"
+                                ,"Odion Ighalo","Edinson Cavani","Dean Henderson","Alex Telles","Donny van de Beek","Amad Diallo","Anthony Elanga","Shola Shoretire","Hannibal Mejbri","William Thomas Fish","Christian Eriksen","Hugo Lloris","Jan Vertonghen","Harry Kane","Dele Alli","Eric Dier","Davinson Sánchez"
+                                ,"Son Heung-min","Ben Davies","Kieran Trippier","Mousa Dembélé","Serge Aurier","Moussa Sissoko","Toby Alderweireld","Danny Rose","Harry Winks","Victor Wanyama","Érik Lamela","Lucas Moura","Kyle Walker-Peters","Fernando Llorente","Paulo Gazzaniga","Michel Vorm","Vincent Janssen"
+                                ,"Georges-Kévin N'Koudou","Juan Foyth","Oliver Skipp","Luke Amos","Giovani Lo Celso","Tanguy Ndombele","Steven Bergwijn","Japhet Tanganga","Ryan Sessegnon","Gedson Fernandes","Troy Parrott","Pierre Højbjerg","Sergio Reguilón","Matt Doherty","Gareth Bale","Joe Rodon","Carlos Vinícius"
+                                ,"Dane Scarlet"]
+
+
+        });
+
 
         
     }
