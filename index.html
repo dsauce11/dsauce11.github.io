@@ -89,7 +89,7 @@
 
             // Create New Line
             svg.append('g').selectAll("dot").data(SeasonsEPL.filter(function(d) { return (d.Squad == "Arsenal")})).enter()
-                .append(circle).attr("class",function(d){return "dot" + d.Season})
+                .append(circle)
                 .attr("cx", function(d) {return x(d.Season)})
                 .attr("cy", function (d) { return y(parseInt(d.Pts)); } )
                 .attr("r",10).attr("transform", "translate(" + 100 + "," + 100 + ")")
