@@ -76,26 +76,20 @@
 
             //Y-axis Creation
             //const y = d3.scaleLinear().domain([40,110]).range([500, 0 ]);
-            y = d3.scaleLinear().domain([40,110]).range([500, 0 ]);
+            y = d3.scaleLinear().domain([40,110]);
             svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
 
             //Create Line
-            /* const line = svg.append('g').append('path')
+            const line = svg.append('g').append('path')
                 .datum(data)
                 .attr('d',d3.line()
-                .x(function(d) { return x(+d.Season) })
-                .y(function(d) { return y(+d.Pts) }))
-                .attr("stroke", function(d){ return myColor("Arsenal") }).style("stroke-width", 4).style("fill", "none") */
+                .x(function(d) { return x(d.Season) })
+                .y(function(d) { return y(d.Pts) }))
+                .attr("stroke", function(d){ return myColor("Arsenal") }).style("stroke-width", 4).style("fill", "none") 
 
-            // Create New Line
-            svg.append('g').selectAll("dot").data(SeasonsEPL.filter(function(d) { return (d.Squad == "Arsenal")})).enter()
-                .append(circle)
-                .attr("cx", function(d) {return x(d.Season)})
-                .attr("cy", function (d) { return y(parseInt(d.Pts)); } )
-                .attr("r",10).attr("transform", "translate(" + 100 + "," + 100 + ")")
-                .style("fill", "#CC0000");
+           
 
-            // Update Teams
+            // Update Teams .attr("class",function(d){return "dot" + d.Season})
             /* function update(SelGroup) {
                 const dataFilter = data.map(function(d){return {Season: d.Season, Pts:d[SelGroup]} });
             
