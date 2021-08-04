@@ -92,6 +92,8 @@
                 .append(circle).attr("class",function(d){return "dot" + d.Season})
                 .attr("cx", function(d) {return x(d.Season)})
                 .attr("cy", function (d) { return y(parseInt(d.Pts)); } )
+                .attr("r",10).attr("transform", "translate(" + 100 + "," + 100 + ")")
+                .style("fill", "#CC0000");
 
             // Update Teams
             /* function update(SelGroup) {
