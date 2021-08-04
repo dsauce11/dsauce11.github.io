@@ -140,6 +140,9 @@
                                 ,"Son Heung-min","Ben Davies","Kieran Trippier","Mousa Dembélé","Serge Aurier","Moussa Sissoko","Toby Alderweireld","Danny Rose","Harry Winks","Victor Wanyama","Érik Lamela","Lucas Moura","Kyle Walker-Peters","Fernando Llorente","Paulo Gazzaniga","Michel Vorm","Vincent Janssen"
                                 ,"Georges-Kévin N'Koudou","Juan Foyth","Oliver Skipp","Luke Amos","Giovani Lo Celso","Tanguy Ndombele","Steven Bergwijn","Japhet Tanganga","Ryan Sessegnon","Gedson Fernandes","Troy Parrott","Pierre Højbjerg","Sergio Reguilón","Matt Doherty","Gareth Bale","Joe Rodon","Carlos Vinícius"
                                 ,"Dane Scarlet"]
+                d3.select("#selectButton").selectAll('myOptions').data(PlayersName).enter().append('Option')
+                    .text(function (d) { return d; })
+                    .attr("value", function (d) { return d; })
 
 
         });
@@ -176,6 +179,9 @@
                                 ,"Son Heung-min","Ben Davies","Kieran Trippier","Mousa Dembélé","Serge Aurier","Moussa Sissoko","Toby Alderweireld","Danny Rose","Harry Winks","Victor Wanyama","Érik Lamela","Lucas Moura","Kyle Walker-Peters","Fernando Llorente","Paulo Gazzaniga","Michel Vorm","Vincent Janssen"
                                 ,"Georges-Kévin N'Koudou","Juan Foyth","Oliver Skipp","Luke Amos","Giovani Lo Celso","Tanguy Ndombele","Steven Bergwijn","Japhet Tanganga","Ryan Sessegnon","Gedson Fernandes","Troy Parrott","Pierre Højbjerg","Sergio Reguilón","Matt Doherty","Gareth Bale","Joe Rodon","Carlos Vinícius"
                                 ,"Dane Scarlet"]
+            d3.select("#selectButton").selectAll('myOptions').data(PlayersName).enter().append('Option')
+                    .text(function (d) { return d; })
+                    .attr("value", function (d) { return d; })
 
 
         });
