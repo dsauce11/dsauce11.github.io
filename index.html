@@ -76,7 +76,7 @@
 
             //Y-axis Creation
             //const y = d3.scaleLinear().domain([40,110]).range([500, 0 ]);
-            y = d3.scaleLinear().domain([40,110]);
+            y = d3.scaleLinear().domain([40,110]).range([500, 0 ]);
             svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
 
             //Create Line
