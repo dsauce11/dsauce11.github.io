@@ -54,6 +54,8 @@
     function graph_one() {
         d3.select('body').select('#p1').text("In this page will contain the Top 6 Clubs total points in the past 4 Premier League Seasons");
         d3.select('body').select('#p2').text("The graph below:");
+        d3.select("svg").remove();
+        d3.select("#selectButton").selectAll('option').remove();
 
         //Actual D3.js graph time
         const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
