@@ -81,7 +81,7 @@
 
             //Create Line
             const line = svg.append('g').append('path')
-                .datum(data)
+                .datum(SeasonsEPL)
                 .attr('d',d3.line()
                 .x(function(d) { return x(d.Season) })
                 .y(function(d) { return y(d.Pts) }))
