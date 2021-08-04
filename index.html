@@ -80,8 +80,8 @@
             const line = svg.append('g').append('path')
                 .datum(data)
                 .attr('d',d3.line()
-                .x(function(d) { return x(+d.Season) })
-                .y(function(d) { return y(+d.Squad) }))
+                .x(function(d) { return x(+d.Squad) })
+                .y(function(d) { return y(+d.Pts) }))
                 .attr("stroke", function(d){ return myColor("Arsenal") }).style("stroke-width", 4).style("fill", "none")
 
             // Update Teams
@@ -89,7 +89,7 @@
                 const dataFilter = data.map(function(d){return {Season: d.Season, value:d[SelGroup]} });
             
                 line.datum(dataFilter).transition().duration(1000).attr("d", d3.line()
-                        .x(function(d) { return x(+d.Season) })
+                        .x(function(d) { return x(+d.Squad) })
                         .y(function(d) { return y(+d.Pts) }) )
                         .attr("stroke", function(d){ return myColor(Group) })
                 };
