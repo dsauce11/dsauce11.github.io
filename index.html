@@ -83,19 +83,19 @@
             const line = svg.append('g').append('path')
                 .datum(SeasonsEPL)
                 .attr('d',d3.line()
-                .x(function(d) { return x(+d.Season) })
-                .y(function(d) { return y(+d.Pts) }))
+                .x(function(d) { return x(d.Season) })
+                .y(function(d) { return y(d.Pts) }))
                 .attr("stroke", function(d){ return myColor("Arsenal") }).style("stroke-width", 4).style("fill", "none") 
 
            
 
             // Update Teams .attr("class",function(d){return "dot" + d.Season})
-           /function update(SelGroup) {
+            function update(SelGroup) {
                 const dataFilter = SeasonsEPL.map(function(d){return {Season: d.Season, Pts:d[SelGroup]} });
             
                 line.datum(dataFilter).transition().duration(1000).attr("d", d3.line()
-                        .x(function(d) { return x(+d.Season) })
-                        .y(function(d) { return y(+d.Pts) }) )
+                        .x(function(d) { return x(d.Season) })
+                        .y(function(d) { return y(d.Pts) }) )
                         .attr("stroke", function(d){ return myColor(Group) })
                 };ß
             
