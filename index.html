@@ -84,7 +84,7 @@
 
             //Create Line
             const line = svg.append('g').append('path')
-                .datum(SeasonsEPL)
+                .datum(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
                 .attr('d',d3.line()
                 .x(function(d) { return x(d.Season) })
                 .y(function(d) { return y(d.Pts) }))
@@ -116,9 +116,10 @@
     function graph_two() {
         d3.select("svg").remove(); //Makes sure to remove what's previously shown and show new graph SOURCE: https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
         d3.select("#selectButton").selectAll('option').remove();
-        d3.select('body').select('#p1').text("Expected Goals vs Goals");
-        d3.select('body').select('#p2').text("The graph below:");
-        
+        d3.select('body').select('#p1').text("For each player, there is a statistic measure that calulates the probability a shot they take will become a goal. That is called xG (Expected Goals). " +
+                                        "In this graph we will compare each season a players xG and their actually tally of goals. Eacb player played a Minimum of one minute the entire season.");
+        d3.select('body').select('#p2').text("Expected Goals vs Goals:");
+        d3.select('body').select('#p3').text("The graph below:");
 
         //Actual D3.js graph time
         const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
