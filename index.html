@@ -52,10 +52,11 @@
     }
 
     function graph_one() {
-        d3.select('body').select('#p1').text("In this page will contain the Top 6 Clubs total points in the past 4 Premier League Seasons");
-        d3.select('body').select('#p2').text("The graph below:");
         d3.select("svg").remove();
         d3.select("#selectButton").selectAll('option').remove();
+        d3.select('body').select('#p1').text("In this page will contain the Top 6 Clubs total points in the past 4 Premier League Seasons");
+        d3.select('body').select('#p2').text("The graph below:");
+        
 
         //Actual D3.js graph time
         const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
@@ -99,7 +100,7 @@
                 line.datum(dataFilter).transition().duration(1000).attr("d", d3.line()
                         .x(function(d) { return x(d.Season) })
                         .y(function(d) { return y(d.Pts) }) )
-                        .attr("stroke", function(d){ return myColor(Group) })
+                        .attr("stroke", function(d){ return myColor(SelGroup) })
                 };ß
             
             d3.select("#selectButton").on("change", function(event,d) {
@@ -113,10 +114,11 @@
 
     }
     function graph_two() {
-        d3.select('body').select('#p1').text("Expected Goals vs Goals");
-        d3.select('body').select('#p2').text("The graph below:");
         d3.select("svg").remove(); //Makes sure to remove what's previously shown and show new graph SOURCE: https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
         d3.select("#selectButton").selectAll('option').remove();
+        d3.select('body').select('#p1').text("Expected Goals vs Goals");
+        d3.select('body').select('#p2').text("The graph below:");
+        
 
         //Actual D3.js graph time
         const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
@@ -152,10 +154,11 @@
         
     }
     function graph_three() {
-        d3.select('body').select('#p1').text("Expected Assists vs Assists");
-        d3.select('body').select('#p2').text("The graph below:");
         d3.select("svg").remove();
         d3.select("#selectButton").selectAll('option').remove();
+        d3.select('body').select('#p1').text("Expected Assists vs Assists");
+        d3.select('body').select('#p2').text("The graph below:");
+        
 
         //Actual D3.js graph time
         const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
