@@ -126,13 +126,19 @@
     function graph_two() {
         d3.select("svg").remove(); //Makes sure to remove what's previously shown and show new graph SOURCE: https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
         d3.select("#selectButton").selectAll('option').remove();
-        d3.select('body').select('#p1').text("For each player, there is a statistic measure that calulates the probability a shot they take will become a goal. That is called xG (Expected Goals). " +
-                                        "In this graph we will compare each season a players xG and their actually tally of goals. Eacb player played a Minimum of one minute the entire season. If a season is blank, the player left the league or had not been promoted/played in the league until the firt appereance.");
-        d3.select('body').select('#p2').text("Expected Goals vs Goals:");
-        d3.select('body').select('#p3').text("The graph below:");
+        d3.select('body').select('#p1').text("In this graph it will show all players amount of goals socred in that season. We will want to see if players are becoming more prolific at scoring as season pass by or if they're ability to hunt down goals has been declining.");
+        d3.select('body').select('#p2').text("");
+        d3.select('body').select('#p3').text("The graph below and feel free to select any player that has played in the Top 6 clubs since the past 4 seasons:");
 
         //Actual D3.js graph time
         const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
+        svg.append('text').attr('id', 'labels1').attr('x', 220).attr('y', 550).text("Season") 
+        svg.append('text').attr('id', 'labels2').attr('x', -100).attr('y', 200).text("Total Goals")
+        svg.append('text').attr('id', 'labels3').attr('x', 500).attr('y', 200).text("For reference of each Season, top 3 goalscores that come from the top 6:")
+        svg.append('text').attr('id', 'labels4').attr('x', 500).attr('y', 230).text("Season 17/18: 1.Mohammed Salah 2.Harry Kane 3.Sergio Aguero")
+        svg.append('text').attr('id', 'labels5').attr('x', 500).attr('y', 260).text("Season 18/19: 1.Pierre-Emerick Aubameyang & Sadio Mane & Mohammed Salah 2.Sergio Aguero 3.Harry Kane ")
+        svg.append('text').attr('id', 'labels6').attr('x', 500).attr('y', 290).text("Season 19/20: 1.Pierre-Emerick Aubameyang 2.Raheem Sterling 3.Mohammed Salah ")
+        svg.append('text').attr('id', 'labels7').attr('x', 500).attr('y', 320).text("Season 20/21: 1.Harry Kane 2.Mohammed Salah 3.Bruno Fernandes ")
 
         //Setting up Data and Graph
         d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersDataFIX.csv").then(function(PlayData) {
@@ -212,12 +218,20 @@
     function graph_three() {
         d3.select("svg").remove();
         d3.select("#selectButton").selectAll('option').remove();
-        d3.select('body').select('#p1').text("Expected Assists vs Assists");
+        d3.select('body').select('#p1').text("This graph will shows players assist record trhoughout the seasons and can see if Players have been imporving with each season, or declining in form");
         d3.select('body').select('#p2').text("The graph below:");
         
 
         //Actual D3.js graph time
         const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
+        svg.append('text').attr('id', 'labels1').attr('x', 220).attr('y', 550).text("Season") 
+        svg.append('text').attr('id', 'labels2').attr('x', -100).attr('y', 200).text("Total Assists")
+        vg.append('text').attr('id', 'labels3').attr('x', 500).attr('y', 200).text("For reference of each Season, top 3 assisters that come from the top 6:")
+        svg.append('text').attr('id', 'labels4').attr('x', 500).attr('y', 230).text("Season 17/18: 1.Kevin De Bruyne 2.Leroy Sane 3.David Silva & Raheem Sterling")
+        svg.append('text').attr('id', 'labels5').attr('x', 500).attr('y', 260).text("Season 18/19: 1.Eden Hazard 2.Trent Alexander-Arnold 3.Christian Ericksen ")
+        svg.append('text').attr('id', 'labels6').attr('x', 500).attr('y', 290).text("Season 19/20: 1.Kevin De Bruyne 2.Trent Alexander-Arnold 3.Andrew Robertson ")
+        svg.append('text').attr('id', 'labels7').attr('x', 500).attr('y', 320).text("Season 20/21: 1.Harry Kane 2.Kevin De Bruyne 3.Bruno Fernandes ")
+
 
         //Setting up Data and Graph
         d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersDataFIX.csv").then(function(PlayData) {
@@ -248,6 +262,18 @@
             //Y-axis
             y = d3.scaleLinear().domain([0,20]).range([500, 0 ]);
             svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
+            // Create mouse Effect
+            const tooltip = d3.select('#SelectDrop').append("div").style("opacity", 0).attr("class","tooltip").style("position", "absolute").style("background-color", "white").style("border", "solid")
+                .style("border-width", "1px").style("border-radius", "1px").style("padding", "1px");            
+            const mouseover3 = function(d) {
+                tooltip.style("opacity", 1).html(`Total amount of Assists: ${d.Ast}`).style("left", (event.pageX) + 90  + "px") .style("top", (event.pageY) + "px")
+            }
+            const mousemove3 = function(event,d) {
+                tooltip.html(`Total amount of Assists: ${d.Ast}`).style("left", (event.pageX) + 90  + "px") .style("top", (event.pageY) + "px")
+            }
+            const mouseleave3 = function(event,d) {
+                tooltip.style("opacity",0)
+            }
             // Bars
             svg.selectAll("mybar").data(PlayData.filter(function(d) { return (d.Player == "Harry Kane")})).join("rect")
                 .attr("x", function(d,i) { return x(d.Season)})
