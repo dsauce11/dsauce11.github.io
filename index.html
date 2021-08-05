@@ -111,8 +111,8 @@
 
             // Update Teams .attr("class",function(d){return "dot" + d.Season})
             function update(SelGroup) {
-                //const dataFilter = SeasonsEPL.map(function(d){return {Season: d.Season, Pts:d[SelGroup]} });
-                dataFilter = SeasonsEPL.filter(function(d){ return (d.Squad == SelGroup)});
+                const dataFilter = SeasonsEPL.map(function(d){return {Season: d.Season, Pts:d[SelGroup]} });
+                //dataFilter = SeasonsEPL.filter(function(d){ return (d.Squad == SelGroup)});
                 line.datum(dataFilter).transition(1000).attr("d",d3.line()
                     .x(d => x(d.Season))
                     .y(d => y(d.Pts) ))
