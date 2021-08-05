@@ -95,7 +95,7 @@
                 tooltip.style("opacity", 1)
             }
             const mousemove = function(event,d) {
-                tooltip.html(`Total amount of Points: ${d.Pts}`).style("left", (event.x)/2  + "px") .style("top", (event.y)/2 + "px")
+                tooltip.html(`Total amount of Points: ${d.Pts}`).style("left", (event.pageX)/2  + "px") .style("top", (event.pageY)/2 + "px")
             }
             const mouseleave = function(event,d) {
                 tooltip.style("opacity",0)
