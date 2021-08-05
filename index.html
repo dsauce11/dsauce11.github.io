@@ -111,9 +111,9 @@
 
             // Update Teams .attr("class",function(d){return "dot" + d.Season})
             function update(SelGroup) {
-                const dataFilter = SeasonsEPL.map(function(d){return {Season: d.Season, Pts:d[SelGroup]} });
-                //dataFilter = SeasonsEPL.filter(function(d){ return (d.Squad == SelGroup)});
-                line.datum(dataFilter).transition(1000).attr("d",d3.line()
+                //const dataFilter = SeasonsEPL.map(function(d){return {Season: d.Season, Pts:d[SelGroup]} });
+                const dataFilter = SeasonsEPL.filter(function(d){ return (d.Squad == SelGroup)});
+                line.datum(dataFilter).transition(200).attr("d",d3.line()
                     .x(d => x(d.Season))
                     .y(d => y(d.Pts) ))
                     .attr("stroke", function(d) { if ((d.Squad) == "Liverpool") {return  "red"}
@@ -134,7 +134,7 @@
                         .attr("stroke", function(d){ return myColor(SelGroup) }) */
                 };
             
-            d3.select("#selectButton").on("change", function(event,d) {
+            d3.select("#selectButton").on("change", function(event, d) {
                 let selectedOption = d3.select(this).property("value");
                 update(selectedOption)
             })      
