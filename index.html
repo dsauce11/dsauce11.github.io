@@ -54,7 +54,7 @@
     function graph_one() {
         d3.select("svg").remove();
         d3.select("#selectButton").selectAll('option').remove();
-        d3.select('body').select('#p1').text("In this page will contain the Top 6 Clubs total points in the past 4 Premier League Seasons");
+        d3.select('body').select('#p1').text("In this page will contain the Top 6 Clubs total points in the past 4 Premier League Seasons. Where we will be able to tell how these top 6 clubs performances have been in the  past 4 seasons. ");
         d3.select('body').select('#p2').text("The graph below:");
         
 
@@ -102,7 +102,7 @@
                                                   if ((d.Squad) == "Manchester Utd") {return  "red"}
                                                   if ((d.Squad) == "Chelsea") {return  "blue"}
                                                   if ((d.Squad) == "Tottenham") {return  "gray"} 
-                                                  if ((d.Squad) == "Arsenal") {return  "red"}})
+                                                  if ((d.Squad) == "Arsenal") {return  "red"}}).style("stroke-width", 4).style("fill", "none")
                 dot.data(dataFilter).transition().duration(1000).attr("cx", d => x(d.Season)).attr("cy", d => y(d.Pts))
             }
             d3.select("#selectButton").on("change", function(d) {
