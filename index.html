@@ -161,7 +161,7 @@
 
             //Graph Creation
             // X-Axis
-            x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(0.2);;
+            x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(0.5);;
             svg.append('g').attr("transform",`translate(0, ${500})`).call(d3.axisBottom(x));
             //Y-axis
             y = d3.scaleLinear().domain([0,40]).range([500, 0 ]);
