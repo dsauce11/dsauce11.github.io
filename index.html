@@ -81,6 +81,20 @@
             const y = d3.scaleLinear().domain([40,110]).range([500, 0 ]);
             svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
 
+            // Create mouse Effect
+            const tooltip = d3.select('#SelectDrop').append("div").style("opacity", 0).attr("class","tooltip").style("background-color", "white").style("border", "solid")
+                .style("border-width", "1px").style("border-radius", "5px").style("padding", "10px");
+            
+            const mouseover = function(event,d) {
+                tooltip.style("opacity", 1)
+            }
+            const mousemove = function(event,d) {
+                tooltip.html(`Total amount of Points: ${d.Pts}`).style("left", (event.pageX)/2 + 90  + "px") .style("top", (event.pageY)/2 + "px")
+            }
+            const mouseleave = function(event,d) {
+                tooltip.transition().duration().style("opacity",0)
+            }
+
             const line = svg.append('g').append("path").datum(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
                 .attr("d", d3.line()
                 .x(d => x(d.Season))
@@ -92,7 +106,10 @@
                     .attr("cx", d => x(d.Season))
                     .attr("cy", d => y(d.Pts))
                     .attr("r", 7)
-                    .attr("fill", "black")
+                    .attr("fill", "black").on("mouseover",mouseover).on("mousemove",mousemove).on("mouseleave",mouseleave)
+
+            
+
             
             function update(SelectedGroup) {
                 const dataFilter = SeasonsEPL.filter(function (d) { return (d.Squad == SelectedGroup) })
