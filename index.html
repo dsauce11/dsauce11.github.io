@@ -76,8 +76,6 @@
             d3.select("#selectButton").selectAll('myOptions').data(teams).enter().append('Option')
                 .text(function (d) { return d; })
                 .attr("value", function (d) { return d; })
-
-            //const myColor = d3.scaleOrdinal().domain(teams).range(d3.schemeSet3);
             
             //X-Axis Creation
             const x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(01);;
@@ -95,8 +93,7 @@
 
             // Create mouse Effect
             const tooltip = d3.select('#SelectDrop').append("div").style("opacity", 0).attr("class","tooltip").style("position", "absolute").style("background-color", "white").style("border", "solid")
-                .style("border-width", "1px").style("border-radius", "1px").style("padding", "1px");
-            
+                .style("border-width", "1px").style("border-radius", "1px").style("padding", "1px");            
             const mouseover = function(d) {
                 tooltip.style("opacity", 1).html(`Total amount of Points: ${d.Pts}`).style("left", (event.pageX) + 90  + "px") .style("top", (event.pageY) + "px")
             }
@@ -174,7 +171,7 @@
                 .attr("x", function(d,i) { return x(d.Season)})
                 .attr("y", function(d,i) { return y(d.Gls)})
                 .attr("width", x.bandwidth())
-                .attr("height", function(d, i)  {return 500 - yscale(d.Gls);})
+                .attr("height", function(d, i)  {return 500 - y(d.Gls);})
                 .attr("fill", "blue")
 
 
