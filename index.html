@@ -46,6 +46,7 @@
                             " While also delving into past seasons player performances and see if any players have been improving or decreasing in quality."
         d3.select('body').select('#p1').text(explantion);
         d3.select('body').select('#p2').text("Below should be the buttons to navigate to the graphs I have presented.");
+        d3.select('body').select('#p3').text("")
         d3.select("svg").remove();
         d3.select("#selectButton").selectAll('option').remove();  
 
@@ -171,9 +172,7 @@
             // Bars
             svg.select("mybat").data(PlayData.filter(function(d) { return d.Player == "Bukayo Saka"})).join("rect")
                 .attr("x", function(d) {return d.Season})
-                .attr("y", function(d){return d.Gls})
-                .attr("width", x.bandwidth()).attr("fill", "#69b3a2").attr("height", d => 800 - y(0)).attr("y", d => y(0))
-            svg.selectAll("rect").transition().duration(800).attr("y", d => y(d.Gls)).attr("height", d => 800 - y(d.Gls)).delay((d,i) => {console.log(i); return i*100})
+                .attr("y", function(d){return d.Gls}).attr("width", x.bandwidth()).attr("height", function(d) { return 800 - y(d.Gls); }).attr("fill", "#69b3a2")
 
 
             //Update
