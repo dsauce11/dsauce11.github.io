@@ -170,7 +170,7 @@
             const y = d3.scaleLinear().domain([0,40]).range([500, 0 ]);
             svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
             // Bars
-            svg.select("mybat").data(PlayData.filter(function(d) { return d.Player == "Bukayo Saka"})).join("rect")
+            svg.select("mybar").data(PlayData.filter(function(d) { return d.Player == "Bukayo Saka"})).join("rect")
                 .attr("x", function(d) {return d.Season})
                 .attr("y", function(d){return d.Gls}).attr("width", x.bandwidth()).attr("height", function(d) { return 800 - y(d.Gls); }).attr("fill", "#69b3a2")
 
