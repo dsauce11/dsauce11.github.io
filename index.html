@@ -131,7 +131,7 @@
         d3.select('body').select('#p3').text("The graph below and feel free to select any player that has played in the Top 6 clubs since the past 4 seasons:");
 
         //Actual D3.js graph time
-        const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
+        const svg = d3.select("#SelectDrop").append("svg").attr("width", 1500).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
         svg.append('text').attr('id', 'labels1').attr('x', 220).attr('y', 550).text("Season") 
         svg.append('text').attr('id', 'labels2').attr('x', -100).attr('y', 200).text("Total Goals")
         svg.append('text').attr('id', 'labels3').attr('x', 500).attr('y', 200).text("For reference of each Season, top 3 goalscores that come from the top 6:")
@@ -223,10 +223,10 @@
         
 
         //Actual D3.js graph time
-        const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
+        const svg = d3.select("#SelectDrop").append("svg").attr("width", 1500).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
         svg.append('text').attr('id', 'labels1').attr('x', 220).attr('y', 550).text("Season") 
         svg.append('text').attr('id', 'labels2').attr('x', -100).attr('y', 200).text("Total Assists")
-        vg.append('text').attr('id', 'labels3').attr('x', 500).attr('y', 200).text("For reference of each Season, top 3 assisters that come from the top 6:")
+        svg.append('text').attr('id', 'labels3').attr('x', 500).attr('y', 200).text("For reference of each Season, top 3 assisters that come from the top 6:")
         svg.append('text').attr('id', 'labels4').attr('x', 500).attr('y', 230).text("Season 17/18: 1.Kevin De Bruyne 2.Leroy Sane 3.David Silva & Raheem Sterling")
         svg.append('text').attr('id', 'labels5').attr('x', 500).attr('y', 260).text("Season 18/19: 1.Eden Hazard 2.Trent Alexander-Arnold 3.Christian Ericksen ")
         svg.append('text').attr('id', 'labels6').attr('x', 500).attr('y', 290).text("Season 19/20: 1.Kevin De Bruyne 2.Trent Alexander-Arnold 3.Andrew Robertson ")
