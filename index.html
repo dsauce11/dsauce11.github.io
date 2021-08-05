@@ -219,6 +219,7 @@
             svg.append('g').attr("transform",`translate(0, ${500})`).call(d3.axisBottom(x));
             //Y-axis
             y = d3.scaleLinear().domain([0,20]).range([500, 0 ]);
+            svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
             // Bars
             svg.selectAll("mybar").data(PlayData.filter(function(d) { return (d.Player == "Harry Kane")})).join("rect")
                 .attr("x", function(d,i) { return x(d.Season)})
