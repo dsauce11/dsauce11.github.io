@@ -72,20 +72,14 @@
             const myColor = d3.scaleOrdinal().domain(teams).range(d3.schemeSet3);
             
             //X-Axis Creation
-            x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(01);;
+            const x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(01);;
             //x = d3.scaleBand().domain(d3.extent(SeasonsEPL,function(d){return (d.Season)})).range([0,800]);
             svg.append('g').attr("transform",`translate(0, ${500})`).call(d3.axisBottom(x));
 
             //Y-axis Creation
-            y = d3.scaleLinear().domain([40,110]).range([500, 0 ]);
+            const y = d3.scaleLinear().domain([40,110]).range([500, 0 ]);
             svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
 
-            //Create Line with Dots
-            /* svg.append("path").datum(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
-                .attr("fill","none").attr("stroke", "#69b3a2").attr("stroke-width", 1.5)
-                .attr('d',d3.line()
-                    .x(function(d) { return x(d.Season) })
-                    .y(function(d) { return y(d.Pts) })) */
             const line = svg.append('g').append("path").datum(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
                 .attr("d", d3.line()
                 .x(d => x(d.Season))
@@ -98,16 +92,6 @@
                     .attr("cy", d => y(d.Pts))
                     .attr("r", 7)
                     .attr("fill", "#69b3a2")
-
-            //Create Line
-            /* const line = svg.append('g').append('path')
-                .datum(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
-                .attr('d',d3.line()
-                .x(function(d) { return x(d.Season) })
-                .y(function(d) { return y(d.Pts) }))
-                .attr("stroke", function(d){ return myColor("Arsenal") }).style("stroke-width", 4).style("fill", "none")  */
-
-           
 
             // Update Teams .attr("class",function(d){return "dot" + d.Season})
             function update(SelGroup) {
@@ -128,12 +112,6 @@
                 dot.datum(dataFilter).transition().duration(100)
                     .attr("cx", d => x(d.Season))
                     .attr("cy", d => y(d.Pts))
-
-            
-                /* line.datum(dataFilter).transition().duration(1000).attr("d", d3.line()
-                        .x(function(d) { return x(d.Season) })
-                        .y(function(d) { return y(d.Pts) }) )
-                        .attr("stroke", function(d){ return myColor(SelGroup) }) */
                 };
             
             d3.select("#selectButton").on("change", function(event, d) {
