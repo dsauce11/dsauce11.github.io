@@ -161,7 +161,7 @@
 
             //Graph Creation
             // X-Axis
-            x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(01);;
+            x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(0.2);;
             svg.append('g').attr("transform",`translate(0, ${500})`).call(d3.axisBottom(x));
             //Y-axis
             y = d3.scaleLinear().domain([0,40]).range([500, 0 ]);
@@ -170,7 +170,7 @@
             svg.selectAll("mybar").data(PlayData.filter(function(d) { return (d.Player == "Harry Kane")})).join("rect")
                 .attr("x", function(d,i) { return x(d.Season)})
                 .attr("y", function(d,i) { return y(d.Gls)})
-                .attr("width", 10)
+                .attr("width", 50)
                 .attr("height", function(d, i)  {return 500 - y(d.Gls);})
                 .attr("fill", "blue")
 
