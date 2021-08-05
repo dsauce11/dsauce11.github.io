@@ -96,10 +96,10 @@
             // Update Teams .attr("class",function(d){return "dot" + d.Season})
             function update(SelGroup) {
                 //const dataFilter = SeasonsEPL.map(function(d){return {Season: d.Season, Squad:d[SelGroup]} });
-                dataFilter = SeasonsEPL.filter(function(d){ return (d.Squad == SelGroup)});
+                //dataFilter = SeasonsEPL.filter(function(d){ return (d.Squad == SelGroup)});
                 //svg.selectAll("circle").data(new_data).exit().remove();
 
-                line.datum(dataFilter).transition(200).attr("d",d3.line()
+                line.datum(SeasonsEPL.filter(function(d){ return (d.Squad == SelGroup)})).transition(200).attr("d",d3.line()
                     .x(d => x(d.Season))
                     .y(d => y(d.Pts) ))
                     .attr("stroke", function(d) { if ((d.Squad) == "Liverpool") {return  "red"}
@@ -110,7 +110,7 @@
                                                   if ((d.Squad) == "Arsenal") {return  "red"}})
                     .style("stroke-width", 4).style("fill", "none");
                 
-                dot.datum(dataFilter).transition().duration(100)
+                dot.datum(SeasonsEPL.filter(function(d){ return (d.Squad == SelGroup)})).transition().duration(100)
                     .attr("cx", d => x(d.Season))
                     .attr("cy", d => y(d.Pts));
                 };
