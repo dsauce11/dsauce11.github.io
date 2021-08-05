@@ -59,7 +59,7 @@
         d3.select('body').select('#p3').text("The graph below:");
         
         //Actual D3.js graph time
-        const svg = d3.select("#SelectDrop").append("svg").attr("width", 900).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
+        const svg = d3.select("#SelectDrop").append("svg").attr("width", 1200).attr("height", 800).append("g").attr("transform",'translate(100, 100)');
         svg.append('text').attr('id', 'labels1').attr('x', 220).attr('y', 550).text("Season") 
         svg.append('text').attr('id', 'labels2').attr('x', -100).attr('y', 200).text("Total Points")
         svg.append('text').attr('id', 'labels3').attr('x', 500).attr('y', 200).text("For reference of each Season teams Final Rank:")
