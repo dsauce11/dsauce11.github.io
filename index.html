@@ -88,8 +88,8 @@
                     .y(function(d) { return y(d.Pts) })) */
             const line = svg.append('g').append("path").datum(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
                 .attr("d", d3.line()
-                .x(d => x(+d.time))
-                .y(d => y(+d.valueA))).attr("stroke", "red").style("stroke-width", 4).style("fill", "none")
+                .x(d => x(d.Season))
+                .y(d => y(d.Pts) )).attr("stroke", "red").style("stroke-width", 4).style("fill", "none")
 
             // Actual Dots Creation
             const dot = svg.append("g").selectAll("circle").data(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
