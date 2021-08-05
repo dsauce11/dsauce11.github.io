@@ -89,7 +89,7 @@
 
             // Create mouse Effect
             const tooltip = d3.select('#SelectDrop').append("div").style("opacity", 0).attr("class","tooltip").style("background-color", "white").style("border", "solid")
-                .style("border-width", "2px").style("border-radius", "5px").style("padding", "5px");
+                .style("border-width", "1px").style("border-radius", "1px").style("padding", "1px");
             
             const mouseover = function(d) {
                 tooltip.style("opacity", 1)
@@ -98,7 +98,7 @@
                 tooltip.html(`Total amount of Points: ${d.Pts}`).style("left", (event.x)/2  + "px") .style("top", (event.y)/2 + "px")
             }
             const mouseleave = function(event,d) {
-                tooltip.transition().duration().style("opacity",0)
+                tooltip.style("opacity",0)
             }
             // Actual Dots Creation
             const dot = svg.append("g").selectAll("circle").data(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
