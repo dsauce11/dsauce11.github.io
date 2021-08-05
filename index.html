@@ -177,8 +177,8 @@
 
             //Update
             function update(SelectedPlayer) {
-                newPlayer = PlayData.filter(function(d){d.Player == SelectedPlayer})
-                svg.select('#idi').remove();
+                newPlayer = PlayData.filter(function(d){return d.Player == SelectedPlayer})
+                //svg.select('#idi').remove();
                 svg.selectAll("rect").data(newPlayer).transition().duration(1000)
                     .attr("x", function(d,i) { return x(d.Season)})
                     .attr("y", function(d,i) { return y(d.Gls)})
