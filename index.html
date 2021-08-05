@@ -138,7 +138,7 @@
 
         //Setting up Data and Graph
         d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersData.csv").then(function(PlayData) {
-            const PlayersName = ["Bernd Leno", "Bukayo Saka","Granit Xhaka","Rob Holding","Pierre-Emerick Aubameyang","Kieran Tierney","Héctor Bellerín","Gabriel Dos Santos","Alexandre Lacazette","Thomas Partey"
+            const PlayersName = ["Bukayo Saka", "Bernd Leno","Granit Xhaka","Rob Holding","Pierre-Emerick Aubameyang","Kieran Tierney","Héctor Bellerín","Gabriel Dos Santos","Alexandre Lacazette","Thomas Partey"
                                 ,"Emile Smith-Rowe","Dani Ceballos","Mohamed Elneny","David Luiz","Nicolas Pépé","Willian","Pablo Marí","Martin Ødegaard","Calum Chambers","Cédric Soares","Martinelli","Ainsley Maitland-Niles"
                                 ,"Eddie Nketiah","Mathew Ryan","Joe Willock","Sead Kolašinac","Reiss Nelson","Shkodran Mustafi","Rúnar Alex Rúnarsson","Mattéo Guendouzi","Sokratis Papastathopoulos","Mesut Özil","Lucas Torreira"
                                 ,"Emiliano Martínez","Nacho Monreal","Alex Iwobi","Henrikh Mkhitaryan","Aaron Ramsey","Laurent Koscielny","Stephan Lichtsteiner","Petr Čech","Konstantinos Mavropanos","Carl Jenkinson","Danny Welbeck","Denis Suárez"
@@ -169,7 +169,7 @@
             const y = d3.scaleLinear().domain([0,40]).range([500, 0 ]);
             svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
             // Bars
-            svg.select("mybat").data(PlayData.filter(function(d) { return d.Player == "Bernd Leno"})).join("rect")
+            svg.select("mybat").data(PlayData.filter(function(d) { return d.Player == "Bukayo Saka"})).join("rect")
                 .attr("x", function(d) {return d.Season})
                 .attr("y", function(d){return d.Gls})
                 .attr("width", x.bandwidth()).attr("fill", "#69b3a2").attr("height", d => 800 - y(0)).attr("y", d => y(0))
