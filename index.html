@@ -94,12 +94,12 @@
                     .attr("fill", "#69b3a2")
 
             // Update Teams .attr("class",function(d){return "dot" + d.Season})
-            function update(SelGroup) {
+           /*  function update(SelGroup) {
                 //const dataFilter = SeasonsEPL.map(function(d){return {Season: d.Season, Squad:d[SelGroup]} });
                 dataFilter = SeasonsEPL.filter(function(d){ return (d.Squad == SelGroup)});
                 svg.selectAll("circle").data(new_data).exit().remove();
                 svg.selectAll('path').remove();
-                
+
                 line.datum(dataFilter).transition(200).attr("d",d3.line()
                     .x(d => x(d.Season))
                     .y(d => y(d.Pts) ))
@@ -119,7 +119,7 @@
             d3.select("#selectButton").on("change", function(event, d) {
                 let selectedOption = d3.select(this).property("value");
                 update(selectedOption);
-            })      
+            })   */    
         
 
 
