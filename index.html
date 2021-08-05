@@ -129,7 +129,7 @@
         d3.select("svg").remove(); //Makes sure to remove what's previously shown and show new graph SOURCE: https://stackoverflow.com/questions/10784018/how-can-i-remove-or-replace-svg-content
         d3.select("#selectButton").selectAll('option').remove();
         d3.select('body').select('#p1').text("For each player, there is a statistic measure that calulates the probability a shot they take will become a goal. That is called xG (Expected Goals). " +
-                                        "In this graph we will compare each season a players xG and their actually tally of goals. Eacb player played a Minimum of one minute the entire season.");
+                                        "In this graph we will compare each season a players xG and their actually tally of goals. Eacb player played a Minimum of one minute the entire season. If a season is blank, the player left the league or had not been promoted/played in the league until the firt appereance.");
         d3.select('body').select('#p2').text("Expected Goals vs Goals:");
         d3.select('body').select('#p3').text("The graph below:");
 
@@ -157,10 +157,26 @@
                                 ,"Son Heung-min","Ben Davies","Kieran Trippier","Mousa Dembélé","Serge Aurier","Moussa Sissoko","Toby Alderweireld","Danny Rose","Harry Winks","Victor Wanyama","Érik Lamela","Lucas Moura","Kyle Walker-Peters","Fernando Llorente","Paulo Gazzaniga","Michel Vorm","Vincent Janssen"
                                 ,"Georges-Kévin N'Koudou","Juan Foyth","Oliver Skipp","Luke Amos","Giovani Lo Celso","Tanguy Ndombele","Steven Bergwijn","Japhet Tanganga","Ryan Sessegnon","Gedson Fernandes","Troy Parrott","Pierre Højbjerg","Sergio Reguilón","Matt Doherty","Gareth Bale","Joe Rodon","Carlos Vinícius"
                                 ,"Dane Scarlet"]
-                d3.select("#selectButton").selectAll('myOptions').data(PlayersName).enter().append('Option')
-                    .text(function (d) { return d; })
-                    .attr("value", function (d) { return d; })
+            d3.select("#selectButton").selectAll('myOptions').data(PlayersName).enter().append('Option')
+                .text(function (d) { return d; })
+                .attr("value", function (d) { return d; })
 
+            //Graph Creation
+            // X-Axis
+            const x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(01);;
+            svg.append('g').attr("transform",`translate(0, ${500})`).call(d3.axisBottom(x)).selectAll('text').attr("transform", "translate(-10,0)rotate(-45)").style("text-anchor", "end");
+            //Y-axis
+            const y = d3.scaleLinear().domain([0,40]).range([500, 0 ]);
+            svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
+            // Bars
+            svg.select("mybat").data(PlayData.filter(function(d) { return d.Player == "Bernd Leno"})).join("rect")
+                .attr("x", function(d) {return d.Season})
+                .attr("y", function(d){return d.Gls})
+                .attr("width", x.bandwidth()).attr("fill", "#69b3a2").attr("height", d => 800 - y(0)).attr("y", d => y(0))
+            svg.selectAll("rect").transition().duration(800).attr("y", d => y(d.Gls)).attr("height", d => 800 - y(d.Gls)).delay((d,i) => {console.log(i); return i*100})
+
+
+            //Update
 
         });
 
