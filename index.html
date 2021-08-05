@@ -92,18 +92,13 @@
                     .attr("cx", d => x(d.Season))
                     .attr("cy", d => y(d.Pts))
                     .attr("r", 7)
-                    .attr("fill", "#69b3a2")
+                    .attr("fill", "black")
             
             function update(SelectedGroup) {
                 const dataFilter = SeasonsEPL.filter(function (d) { return (d.Squad == SelectedGroup) })
                 /* svg.selectAll("circle").data(new_data).exit().remove(); 
                 svg.selectAll("path").data(new_data).exit().remove();  */
-                line.datum(dataFilter).transition().duration(1000).attr("d", d3.line().x(d => x(d.Season)).y(d=>y(d.Pts))).attr("stroke", function(d) { if ((d.Squad) == "Liverpool") {return  "red"}
-                                                  if ((d.Squad) == "Manchester City") {return  "blue"}
-                                                  if ((d.Squad) == "Manchester Utd") {return  "red"}
-                                                  if ((d.Squad) == "Chelsea") {return  "blue"}
-                                                  if ((d.Squad) == "Tottenham") {return  "gray"} 
-                                                  if ((d.Squad) == "Arsenal") {return  "red"}}).style("stroke-width", 4).style("fill", "none")
+                line.datum(dataFilter).transition().duration(1000).attr("d", d3.line().x(d => x(d.Season)).y(d=>y(d.Pts)))
                 dot.data(dataFilter).transition().duration(1000).attr("cx", d => x(d.Season)).attr("cy", d => y(d.Pts))
             }
             d3.select("#selectButton").on("change", function(d) {
