@@ -164,15 +164,15 @@
 
             //Graph Creation
             // X-Axis
-            const x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(0.2);;
+            x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(0.2);;
             svg.append('g').attr("transform",`translate(0, ${500})`).call(d3.axisBottom(x)).selectAll('text').attr("transform", "translate(-10,0)rotate(-45)").style("text-anchor", "end");
             //Y-axis
-            const y = d3.scaleLinear().domain([0,40]).range([500, 0 ]);
+            y = d3.scaleLinear().domain([0,40]).range([500, 0 ]);
             svg.append("g").call(d3.axisLeft(y));
             // Bars
-            svg.select("mybar").data(PlayData.filter(function(d) { return d.Player == "Harry Kane"})).join("rect")
-                .attr("x", d => x(d.Season))
-                .attr("y", d => y(d.Gls)).attr("width", x.bandwidth()).attr("height", d => 800 - y(d.Gls)).attr("fill", "#69b3a2")
+            svg.select("mybar").data(PlayData.filter(function(d) { return (d.Player == "Harry Kane")})).join("rect")
+                .attr("x", function(d,i) { return x(d.Season)})
+                .attr("y", function(d,i) { return y(d.Gls)}).attr("width", x.bandwidth()).attr("height", d => 500 - y(d.Gls)).attr("fill", "blue")
 
 
             //Update
