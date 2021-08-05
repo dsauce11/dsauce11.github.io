@@ -191,12 +191,16 @@
 
             //Update
             function update(SelectedPlayer) {
-                svg.selectAll("rect").data(newPlayer).exit().remove(); 
-                newPlayer = PlayData.filter(function(d){return (d.Player == SelectedPlayer)})
                 
+                newPlayer = PlayData.filter(function(d){return (d.Player == SelectedPlayer)})
+                svg.selectAll("rect").data(newPlayer).exit().remove();
                 svg.selectAll("rect").data(newPlayer).transition().duration(1000)
                     .attr("x", function(d,i) { return x(d.Season)})
-                    .attr("y", function(d,i) { return y(d.Gls)})
+                    .attr("y", function(d,i) { 
+                        if (d.Season == undefined) {
+                            return y(0)
+                        }
+                        return y(d.Gls)})
                     .attr("width", 50)
                     .attr("height", function(d, i)  {return 500 - y(d.Gls);})
                     .attr("fill", "blue")
