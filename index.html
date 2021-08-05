@@ -114,7 +114,7 @@
             function update(SelectedGroup) {
                 const dataFilter = SeasonsEPL.filter(function (d) { return (d.Squad == SelectedGroup) })
                 line.datum(dataFilter).transition().duration(1000).attr("d", d3.line().x(d => x(d.Season)).y(d=>y(d.Pts)))
-                dot.data(dataFilter).transition().duration(1000).attr("cx", d => x(d.Season)).attr("cy", d => y(d.Pts))
+                dot.data(dataFilter).transition().duration(1000).attr("cx", d => x(d.Season)).attr("cy", d => y(d.Pts)).on("mouseover",mouseover).on("mousemove",mousemove).on("mouseleave",mouseleave)
             }
             d3.select("#selectButton").on("change", function(d) {
                 let selectedOption = d3.select(this).property("value")
