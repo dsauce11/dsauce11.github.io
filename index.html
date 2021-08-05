@@ -81,17 +81,22 @@
             svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
 
             //Create Line with Dots
-            svg.append("path").datum(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
+            /* svg.append("path").datum(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
                 .attr("fill","none").attr("stroke", "#69b3a2").attr("stroke-width", 1.5)
                 .attr('d',d3.line()
                     .x(function(d) { return x(d.Season) })
-                    .y(function(d) { return y(d.Pts) }))
+                    .y(function(d) { return y(d.Pts) })) */
+            const line = svg.append('g').append("path").datum(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
+                .attr("d", d3.line()
+                .x(d => x(+d.time))
+                .y(d => y(+d.valueA))).attr("stroke", "red").style("stroke-width", 4).style("fill", "none")
+
             // Actual Dots Creation
-            svg.append("g").selectAll("dot").data(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
+            const dot = svg.append("g").selectAll("circle").data(SeasonsEPL.filter(function(d){ return (d.Squad == "Arsenal")}))
                 .join("circle")
                     .attr("cx", d => x(d.Season))
                     .attr("cy", d => y(d.Pts))
-                    .attr("r", 5)
+                    .attr("r", 7)
                     .attr("fill", "#69b3a2")
 
             //Create Line
@@ -104,21 +109,23 @@
 
            
 
-            /* // Update Teams .attr("class",function(d){return "dot" + d.Season})
+            // Update Teams .attr("class",function(d){return "dot" + d.Season})
             function update(SelGroup) {
                 //const dataFilter = SeasonsEPL.map(function(d){return {Season: d.Season, Pts:d[SelGroup]} });
-                dataFilter = SeasonsEPL.filter(function(d){ return (d.squad == SelGroup)})
+                dataFilter = SeasonsEPL.filter(function(d){ return (d.Squad == SelGroup)})
+                
+
             
-                line.datum(dataFilter).transition().duration(1000).attr("d", d3.line()
+                /* line.datum(dataFilter).transition().duration(1000).attr("d", d3.line()
                         .x(function(d) { return x(d.Season) })
                         .y(function(d) { return y(d.Pts) }) )
-                        .attr("stroke", function(d){ return myColor(SelGroup) })
-                };ß
+                        .attr("stroke", function(d){ return myColor(SelGroup) }) */
+                };
             
             d3.select("#selectButton").on("change", function(event,d) {
                 let selectedOption = d3.select(this).property("value");
                 update(selectedOption)
-            })       */
+            })      
         
 
 
