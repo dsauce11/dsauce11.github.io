@@ -139,7 +139,7 @@
 
         //Setting up Data and Graph
         d3.csv("https://raw.githubusercontent.com/dsauce11/dsauce11.github.io/main/PlayersData.csv").then(function(PlayData) {
-            const PlayersName = ["Bukayo Saka", "Bernd Leno","Granit Xhaka","Rob Holding","Pierre-Emerick Aubameyang","Kieran Tierney","Héctor Bellerín","Gabriel Dos Santos","Alexandre Lacazette","Thomas Partey"
+            const PlayersName = ["Harry Kane", "Bernd Leno","Granit Xhaka","Rob Holding","Pierre-Emerick Aubameyang","Kieran Tierney","Héctor Bellerín","Gabriel Dos Santos","Alexandre Lacazette","Thomas Partey"
                                 ,"Emile Smith-Rowe","Dani Ceballos","Mohamed Elneny","David Luiz","Nicolas Pépé","Willian","Pablo Marí","Martin Ødegaard","Calum Chambers","Cédric Soares","Martinelli","Ainsley Maitland-Niles"
                                 ,"Eddie Nketiah","Mathew Ryan","Joe Willock","Sead Kolašinac","Reiss Nelson","Shkodran Mustafi","Rúnar Alex Rúnarsson","Mattéo Guendouzi","Sokratis Papastathopoulos","Mesut Özil","Lucas Torreira"
                                 ,"Emiliano Martínez","Nacho Monreal","Alex Iwobi","Henrikh Mkhitaryan","Aaron Ramsey","Laurent Koscielny","Stephan Lichtsteiner","Petr Čech","Konstantinos Mavropanos","Carl Jenkinson","Danny Welbeck","Denis Suárez"
@@ -154,7 +154,7 @@
                                 ,"Yaya Touré","Brahim Díaz","Phil Foden","Lukas Nmecha","Riyad Mahrez","Rodri","João Cancelo","Eric García","Angeliño","Thomas Doyle","Rúben Dias","Ferrán Torres","Nathan Aké","Scott Carson","Zack Steffen","Liam Delap","David de Gea","Nemanja Matić","Romelu Lukaku"
                                 ,"Antonio Valencia","Chris Smalling","Ashley Young","Paul Pogba","Phil Jones","Juan Mata","Jesse Lingard","Anthony Martial","Marcus Rashford","Victor Lindelöf","Ander Herrera","Eric Bailly","Luke Shaw","Marcos Rojo","Scott McTominay","Marouane Fellaini","Matteo Darmian","Daley Blind"
                                 ,"Michael Carrick","Zlatan Ibrahimović","Sergio Romero","Axel Tuanzebe","Fred","Diogo Dalot","Andreas Pereira","Mason Greenwood","Tahith Chong","Angel Gomes","James Garner","Harry Maguire","Aaron Wan-Bissaka","Daniel James","Bruno Fernandes","Brandon Williams","Timothy Fosu-Mensah"
-                                ,"Odion Ighalo","Edinson Cavani","Dean Henderson","Alex Telles","Donny van de Beek","Amad Diallo","Anthony Elanga","Shola Shoretire","Hannibal Mejbri","William Thomas Fish","Christian Eriksen","Hugo Lloris","Jan Vertonghen","Harry Kane","Dele Alli","Eric Dier","Davinson Sánchez"
+                                ,"Odion Ighalo","Edinson Cavani","Dean Henderson","Alex Telles","Donny van de Beek","Amad Diallo","Anthony Elanga","Shola Shoretire","Hannibal Mejbri","William Thomas Fish","Christian Eriksen","Hugo Lloris","Jan Vertonghen","Bukayo Saka","Dele Alli","Eric Dier","Davinson Sánchez"
                                 ,"Son Heung-min","Ben Davies","Kieran Trippier","Mousa Dembélé","Serge Aurier","Moussa Sissoko","Toby Alderweireld","Danny Rose","Harry Winks","Victor Wanyama","Érik Lamela","Lucas Moura","Kyle Walker-Peters","Fernando Llorente","Paulo Gazzaniga","Michel Vorm","Vincent Janssen"
                                 ,"Georges-Kévin N'Koudou","Juan Foyth","Oliver Skipp","Luke Amos","Giovani Lo Celso","Tanguy Ndombele","Steven Bergwijn","Japhet Tanganga","Ryan Sessegnon","Gedson Fernandes","Troy Parrott","Pierre Højbjerg","Sergio Reguilón","Matt Doherty","Gareth Bale","Joe Rodon","Carlos Vinícius"
                                 ,"Dane Scarlet"]
@@ -164,15 +164,15 @@
 
             //Graph Creation
             // X-Axis
-            const x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(01);;
+            const x = d3.scaleBand().domain(["17/18","18/19","19/20","20/21"]).range([0,500]).padding(0.2);;
             svg.append('g').attr("transform",`translate(0, ${500})`).call(d3.axisBottom(x)).selectAll('text').attr("transform", "translate(-10,0)rotate(-45)").style("text-anchor", "end");
             //Y-axis
             const y = d3.scaleLinear().domain([0,40]).range([500, 0 ]);
-            svg.append("g").attr("transform","translate(0,0)").call(d3.axisLeft(y));
+            svg.append("g").call(d3.axisLeft(y));
             // Bars
-            svg.select("mybar").data(PlayData.filter(function(d) { return d.Player == "Bukayo Saka"})).join("rect")
-                .attr("x", function(d) {return d.Season})
-                .attr("y", function(d){return d.Gls}).attr("width", x.bandwidth()).attr("height", function(d) { return 800 - y(d.Gls); }).attr("fill", "#69b3a2")
+            svg.select("mybar").data(PlayData.filter(function(d) { return d.Player == "Harry Kane"})).join("rect")
+                .attr("x", d => x(d.Season))
+                .attr("y", d => y(d.Gls)).attr("width", x.bandwidth()).attr("height", d => 800 - y(d.Gls)).attr("fill", "#69b3a2")
 
 
             //Update
